@@ -42,32 +42,46 @@ struct EditLogView: View {
                 }
             } header: { Text("Base configuration")}
             
-            // Custom information to enter
+            // MARK: Stamp info
+            
             Section {
                 TextField("Enter new log", text: $stamp.title)
             } header: { Text("Title") }
             
+            Section {
+                TextField("Description", text: $stamp.desc)
+            } header: { Text("Description")}
+            
             // TODO: Add query here to suggest similar stamps entered in the past
             
             
-            // Base information that cannot change
+            // MARK: Locations
+            
             Section {
-                Label(stamp.coords[0].description, systemImage: "mappin.and.ellipse")
-                
-                Button {
-                    updateLocation(index: 0)
-                } label: {
-                    HStack {
-                        Text("Set as Current Location")
-                        
-                        Spacer()
-                        
-                        ProgressView()
-                            .opacity(locationUpdating ? 1 : 0)
+                ForEach(stamp.coords.indices, id: \.self) { index in
+                    Label(title: {
+                        HStack {
+                            Text(stamp.coords[index].description)
+                            Spacer()
+                            Button {
+                                updateLocation(index: index)
+                            } label: {
+                                Image(systemName: "location.circle.fill")
+                            }
+                        }
+                    }, icon: { Image(systemName: index.toLetter() + ".square")})
+                }
+ 
+            } header: {
+                HStack {
+                    Text("Locations")
+                    Spacer()
+                    Button {
+                        stamp.coords.append(Coord())
+                    } label: {
+                        Image(systemName: "plus")
                     }
                 }
-            } header: {
-                Text("Location")
             }
             
             Section {
