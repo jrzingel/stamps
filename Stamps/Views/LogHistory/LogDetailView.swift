@@ -13,7 +13,7 @@ import SwiftData
 
 struct LogDetailView: View {
     @ObservedObject var mapModel = MapModel.shared
-    var log: Stamp
+    var stamp: Stamp
     
     var body: some View {
         GeometryReader { geometry in
@@ -21,30 +21,30 @@ struct LogDetailView: View {
                 HStack(alignment: .center){
                     Spacer()
                     
-                    Text(log.log)
+                    Text(stamp.title)
                         .font(.title)
                     
-                    Image(systemName: log.icon)
+                    Image(systemName: stamp.icon)
                         .font(.title)
-                        .foregroundStyle(log.color)
+                        .foregroundStyle(stamp.color)
                 }
                 .padding()
                 
-                Text(log.time.time)
+                Text(stamp.time.time)
                 
                 
                 List {
                     Group {
                         Section {
-                            Label(log.suburb, systemImage: "house.fill")
+                            Label(stamp.suburb, systemImage: "house.fill")
                             
-                            Label(log.device, systemImage: "pc")
+                            Label(stamp.device, systemImage: "pc")
                             
-                            Label(log.category.description, systemImage: "shippingbox.fill")
+                            Label(stamp.category.description, systemImage: "shippingbox.fill")
                         }
                         
                         Section {
-                            NavigationLink(value: Destination.mapSingleLog(log)) {
+                            NavigationLink(value: Destination.mapSingleLog(stamp)) {
                                 Label("See in map", systemImage: "map.fill")
                             }
                         }
@@ -77,7 +77,7 @@ struct LogDetailView: View {
         }
 //        .ignoresSafeArea(.container, edges: [.top])
         .onAppear {
-            print("Move camera to log: \(log.log)")
+            print("Move camera to log: \(stamp.title)")
         }
     }
 }
@@ -87,7 +87,7 @@ struct LogDetailView: View {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Stamp.self, configurations: config)
         
-        return LogDetailView(log: SAMPLE_STAMPS[0])
+        return LogDetailView(stamp: SAMPLE_STAMPS[0])
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container.")

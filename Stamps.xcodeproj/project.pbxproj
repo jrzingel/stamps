@@ -66,13 +66,11 @@
 		E8B518902B4A559A00925020 /* LogRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518812B4A559A00925020 /* LogRowView.swift */; };
 		E8B518912B4A559A00925020 /* LogRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518812B4A559A00925020 /* LogRowView.swift */; };
 		E8B518922B4A559A00925020 /* EditLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518822B4A559A00925020 /* EditLogView.swift */; };
-		E8B518932B4A559A00925020 /* EditLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518822B4A559A00925020 /* EditLogView.swift */; };
 		E8B518942B4A559A00925020 /* LogListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518832B4A559A00925020 /* LogListView.swift */; };
 		E8B518952B4A559A00925020 /* LogListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518832B4A559A00925020 /* LogListView.swift */; };
 		E8B518962B4A559A00925020 /* LogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518842B4A559A00925020 /* LogDetailView.swift */; };
 		E8B518972B4A559A00925020 /* LogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518842B4A559A00925020 /* LogDetailView.swift */; };
 		E8B518982B4A559A00925020 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518852B4A559A00925020 /* Sidebar.swift */; };
-		E8B518992B4A559A00925020 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518852B4A559A00925020 /* Sidebar.swift */; };
 		E8B5189A2B4A559A00925020 /* PrettyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518872B4A559A00925020 /* PrettyIcon.swift */; };
 		E8B5189B2B4A559A00925020 /* PrettyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518872B4A559A00925020 /* PrettyIcon.swift */; };
 /* End PBXBuildFile section */
@@ -566,7 +564,6 @@
 				E8B518972B4A559A00925020 /* LogDetailView.swift in Sources */,
 				E8B5181F2B4A517D00925020 /* StampsTests.swift in Sources */,
 				E8B518612B4A557F00925020 /* Stamp.swift in Sources */,
-				E8B518932B4A559A00925020 /* EditLogView.swift in Sources */,
 				E8B518532B4A553900925020 /* Result+Success.swift in Sources */,
 				E8B518952B4A559A00925020 /* LogListView.swift in Sources */,
 				E8B518652B4A557F00925020 /* Day.swift in Sources */,
@@ -587,7 +584,6 @@
 				E8B518432B4A550A00925020 /* BaseConfiguration.swift in Sources */,
 				E8B518892B4A559A00925020 /* MapView.swift in Sources */,
 				E8B518792B4A559000925020 /* LocationManager.swift in Sources */,
-				E8B518992B4A559A00925020 /* Sidebar.swift in Sources */,
 				E8B5186D2B4A557F00925020 /* TaskCancellable.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

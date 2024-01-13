@@ -16,58 +16,53 @@ public typealias UnixTime = Int
 
 /// A raw structure of a log. These objects are parsed by the API
 struct RawStamp: Decodable {
-    var time: Int
-    var longitude: String
-    var latitude: String
+    var time: UnixTime
+    var coords: [Coord]
     var suburb: String
     var device: String
-    var type: String
-    var log: String
+    var category: Category
+    var title: String
+    var desc: String
 }
 
 /// A functional log object with many computed properties
 @Model
 class Stamp: Identifiable {
     var id: String = UUID().uuidString
+    var lastUpdated: Date   // Last time data was modified
+    var lastSynced: Date?   // Time synced with the API server
+    
     @Attribute(.unique) var time: Date      // Force only one log at a time
-    var coord: Coord
-    var suburb: String
+    var coords: [Coord]
+    var suburb: String  // Localised version of coords[0]
     var device: String
     var category: Category
-    var log: String
+    var title: String
+    var desc: String
     
-    /// If this log has been synced with the API server
-    var uploaded: Bool
     
     /// Convert from a `RawLog` to `Log`
-    init(from rawLog: RawStamp, downloaded: Bool = false) {
-        self.suburb = rawLog.suburb
-        self.device = rawLog.device
-        
-        self.time = Date(timeIntervalSince1970: Double(rawLog.time))
-        self.coord = Coord(longitude: rawLog.longitude, latitude: rawLog.latitude)
-        
-        self.category = rawLog.type.toCategory()
-        self.log = rawLog.log
-        self.uploaded = downloaded
+    init(from rawStamp: RawStamp, lastSynced: Date? = nil) {
+        self.device = rawStamp.device
+        self.time = Date(timeIntervalSince1970: Double(rawStamp.time))
+        self.coords = rawStamp.coords
+        self.suburb = rawStamp.suburb
+        self.category = rawStamp.category
+        self.title = rawStamp.title
+        self.desc = rawStamp.desc
+        self.lastSynced = lastSynced
+        self.lastUpdated = Date()
     }
     
     /// Only use for debugging purposes
     convenience init(_ unixTime: UnixTime, _ longitude: Double, _ latitude: Double, _ suburb: String, _ device: String, _ rawType: String, _ log: String) {
-        self.init(from: RawStamp(time: unixTime, longitude: String(longitude), latitude: String(latitude), suburb: suburb, device: device, type: rawType, log: log))
+        self.init(from: RawStamp(time: unixTime, coords: [Coord(longitude: String(longitude), latitude: String(latitude))], suburb: suburb, device: device, category: rawType.toCategory(), title: log, desc: ""))
     }
     
     /// Create a log with a "default" configuration
-    init() {
-        self.suburb = "need_to_implement"
-        self.device = Devices.this.description
-        self.time = Date()
-        self.coord = Coord()
-        self.category = .generic
-        self.log = ""
-        self.uploaded = false
+    convenience init() {
+        self.init(from: RawStamp(time: 5525630, coords: [Coord.Tauranga], suburb: "Tauranga", device: Devices.this.description, category: .generic, title: "Example title", desc: "Example description"))
     }
-    
     
     // MARK: Helper map functions
     

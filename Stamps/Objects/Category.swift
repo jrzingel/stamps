@@ -7,9 +7,9 @@
 
 import SwiftUI
 
-// All the different log types... Gotta catch em all
-// Note that as `Type` is reserved in swift these are known as "categories" on iOS
+// FIXME: Update from log category to stamp categories. Eg walk, explore, hangout, etc
 
+/// The different types a stamp can be
 enum Category: CustomStringConvertible, CaseIterable, Codable, Identifiable {
     
     case generic

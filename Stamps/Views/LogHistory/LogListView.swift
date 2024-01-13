@@ -24,7 +24,7 @@ struct LogListView: View {
                 Section {
                     ForEach(day.stamps) { log in
                         NavigationLink(value: self.editMode ? Destination.editLog(log) : Destination.viewLog(log)) {
-                            LogRowView(log: log)
+                            LogRowView(stamp: log)
                         }
                     }
                     .onDelete(perform: deleteLog)

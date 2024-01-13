@@ -16,7 +16,7 @@ struct SingleLogMapView: View {
     var log: Stamp
     
     var body: some View {
-        ReducedMapView(content: .specificLog(log))
+        ReducedMapView(content: .specificStamp(log))
             .toolbar {
                 ToolbarItemGroup(placement: .automatic) {
                     Menu("Map style", systemImage: "map.fill") {

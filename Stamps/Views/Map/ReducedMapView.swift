@@ -9,12 +9,12 @@ import SwiftUI
 import MapKit
 import SwiftData
 
-// Displays the actual map view. Controlled from `MapView` to receive the correct Logs to display
+// Displays the actual map view. Controlled from `MapView` to receive the correct stamps to display
 
 enum MapContent: Hashable {
-    case lastLog
+    case lastStamp
     case stampsAfter(Date)
-    case specificLog(Stamp)
+    case specificStamp(Stamp)
 }
 
 let DEFAULT_MAP_POSITION: MapCameraPosition = .userLocation(fallback: .region(MKCoordinateRegion(center: Coord.Tauranga.map, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))))
@@ -32,7 +32,7 @@ struct ReducedMapView: View {
         // FIXME: Currently there appears to be a bug where we cannot test by enum condition. So we cannot search by Categories
         
         switch content {
-        case .lastLog:
+        case .lastStamp:
             Logger.general.info("MapView> Showing last log only")
             var descriptor = FetchDescriptor<Stamp>(sortBy: [SortDescriptor(\.time, order: .reverse)])
             descriptor.fetchLimit = 1
@@ -45,9 +45,9 @@ struct ReducedMapView: View {
                 $0.time > date
             })
             
-        case .specificLog(let log):
-            Logger.general.info("MapView> showing only the given log '\(log.log)'")
-            let id = log.id
+        case .specificStamp(let stamp):
+            Logger.general.info("MapView> showing only the given stamp'\(stamp.title)'")
+            let id = stamp.id
             _stamps = Query(filter: #Predicate<Stamp> {
                 $0.id == id
             })
@@ -62,8 +62,9 @@ struct ReducedMapView: View {
         
         return Map(position: boundPosition, interactionModes: [.pan, .rotate, .zoom]) {
             
-            ForEach(stamps) { log in
-                Marker(log.log, coordinate: log.coord.map)
+            // FIXME: Update the method used in earthquake demo app
+            ForEach(stamps) { stamp in
+                Marker(stamp.title, coordinate: stamp.coords[0].map)
             }
             
             UserAnnotation()
@@ -85,15 +86,15 @@ struct ReducedMapView: View {
         if stamps.isEmpty {
             return DEFAULT_MAP_POSITION
         }
-        var minLat = stamps[0].coord.latitude
-        var maxLat = stamps[0].coord.latitude
-        var minLon = stamps[0].coord.longitude
-        var maxLon = stamps[0].coord.longitude
+        var minLat = stamps[0].coords[0].latitude
+        var maxLat = stamps[0].coords[0].latitude
+        var minLon = stamps[0].coords[0].longitude
+        var maxLon = stamps[0].coords[0].longitude
         for log in stamps {
-            if log.coord.latitude > maxLat { maxLat = log.coord.latitude }
-            if log.coord.latitude < minLat { minLat = log.coord.latitude }
-            if log.coord.longitude > maxLon { maxLon = log.coord.longitude }
-            if log.coord.longitude < minLon { minLon = log.coord.longitude }
+            if log.coords[0].latitude > maxLat { maxLat = log.coords[0].latitude }
+            if log.coords[0].latitude < minLat { minLat = log.coords[0].latitude }
+            if log.coords[0].longitude > maxLon { maxLon = log.coords[0].longitude }
+            if log.coords[0].longitude < minLon { minLon = log.coords[0].longitude }
         }
         let center = CLLocationCoordinate2D(latitude: (minLat+maxLat)/2, longitude: (minLon+maxLon)/2)
         let zoomOutScale = 1.2  // How far to scale out from the edges
@@ -104,5 +105,5 @@ struct ReducedMapView: View {
 }
 
 #Preview {
-    ReducedMapView(content: .lastLog)
+    ReducedMapView(content: .lastStamp)
 }

@@ -60,9 +60,9 @@ struct Sidebar: View {
                 case .map:
                     MapView()
                 case .editLog(let log):
-                    EditLogView(log: log)
+                    EditLogView(stamp: log)
                 case .viewLog(let log):
-                    LogDetailView(log: log)
+                    LogDetailView(stamp: log)
                 case .history:
                     LogListView()
                 case .mapSingleLog(let log):

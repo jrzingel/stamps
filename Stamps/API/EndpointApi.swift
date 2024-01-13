@@ -36,7 +36,7 @@ public class EndpointApi: BaseApi {
                 print("API response '\(response)'")
                 do {
                     let rawLog = try decoder.decode(RawStamp.self, from: Data(response.utf8))
-                    completion(.success(Stamp(from: rawLog, downloaded: true)))
+                    completion(.success(Stamp(from: rawLog, lastSynced: Date())))
                 } catch {
                     completion(.failure(ApiError.cannotParseResponse(error: error)))
                 }
@@ -58,7 +58,7 @@ public class EndpointApi: BaseApi {
                     let rawLogs = try decoder.decode([RawStamp].self, from: Data(response.utf8))
                     var stamps = [Stamp]()
                     for rawLog in rawLogs {
-                        stamps.append(Stamp(from: rawLog, downloaded: true))
+                        stamps.append(Stamp(from: rawLog, lastSynced: Date()))
                     }
                     completion(.success(stamps))
                 } catch {

@@ -16,7 +16,7 @@ struct EditLogView: View {
     @ObservedObject var locationManager = LocationManager.shared
     @State var locationUpdating = false
     
-    @Bindable var log: Stamp
+    @Bindable var stamp: Stamp
     
     // TEMP variables
     @State private var isSpecial: Bool = false
@@ -24,57 +24,38 @@ struct EditLogView: View {
     
     var body: some View {
         Form {
-            DatePicker("Time", selection: $log.time)
-            
-            Toggle(isOn: $isSpecial) {
-                Text("Special log")
-            }
-            
-            Picker("Category", selection: $log.category)  {
-                ForEach(Category.allCases) { category in
-                    HStack {
-                        Text(category.description)
-                        Spacer()
-                        Image(systemName: category.icon)
+            Section {
+                DatePicker("Time", selection: $stamp.time)
+                
+                Toggle(isOn: $isSpecial) {
+                    Text("Special log")
+                }
+                
+                Picker("Category", selection: $stamp.category)  {
+                    ForEach(Category.allCases) { category in
+                        HStack {
+                            Text(category.description)
+                            Spacer()
+                            Image(systemName: category.icon)
+                        }
                     }
                 }
-            }
+            } header: { Text("Base configuration")}
             
             // Custom information to enter
-            switch log.category.selection {
-            case .any:
-                Section {
-                    TextField("Enter new log", text: $log.log)
-                } header: { Text("Create new log")}
-                
-                // TODO: Add query here to suggest similar stamps entered in the past
-                
-            case .restricted(let options):
-                Section {
-                    ForEach(options, id: \.self) { option in
-                        SelectionCell(log: option, selectedLog: $log.log)
-                    }
-                } header: { Text("Select new log")}
-                
-            case .singleton(let value):
-                Section {
-                    SelectionCell(log: value, selectedLog: $log.log)
-                } header: { Text("Log") }
-                
-            case .invalid:
-                Section {
-                    Text("The current log type is legacy only and cannot be updated. Please use another log type instead.")
-                }
-            }
+            Section {
+                TextField("Enter new log", text: $stamp.title)
+            } header: { Text("Title") }
+            
+            // TODO: Add query here to suggest similar stamps entered in the past
+            
             
             // Base information that cannot change
             Section {
-                Label(log.coord.description, systemImage: "mappin.and.ellipse")
-                
-                Label(log.suburb, systemImage: "house.fill")
+                Label(stamp.coords[0].description, systemImage: "mappin.and.ellipse")
                 
                 Button {
-                    updateLocation()
+                    updateLocation(index: 0)
                 } label: {
                     HStack {
                         Text("Set as Current Location")
@@ -85,34 +66,32 @@ struct EditLogView: View {
                             .opacity(locationUpdating ? 1 : 0)
                     }
                 }
-                
-                
             } header: {
                 Text("Location")
             }
             
             Section {
-                Label(log.device, systemImage: "pc")
+                Label(stamp.device, systemImage: "pc")
                 
-                Label(log.category.description, systemImage: "shippingbox.fill")
+                Label(stamp.category.description, systemImage: "shippingbox.fill")
             } header: {
                 Text("Non-Configurable")
             }
         }
         .onAppear {
-            if log.coord.isZero {
-                updateLocation()
+            if stamp.coords[0].isZero {
+                updateLocation(index: 0)
             }
         }
         
     }
     
-    func updateLocation() {
+    func updateLocation(index: Int) {
         self.locationUpdating = true
         Logger.location.info("Updating log info")
         locationManager.refresh { coord, suburb in
-            log.coord = coord.toCoord()
-            log.suburb = suburb
+            stamp.coords[index] = coord.toCoord()
+            //            stamp.suburb = suburb
             self.locationUpdating = false
         }
     }
@@ -149,27 +128,11 @@ struct SelectionCell: View {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Stamp.self, configurations: config)
         
-        let example = Stamp(5625, 176.253, -37.526, "Te Puna", "iPhone", "COMMON", "sample log")
-        return EditLogView(log: example)
+        let example = Stamp()
+        return EditLogView(stamp: example)
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container.")
     }
 }
 
-#Preview {
-    do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: Stamp.self, configurations: config)
-        
-        let example = Stamp(5625, 176.253, -37.526, "Te Puna", "iPhone", "CODE", "sample log")
-        return EditLogView(log: example)
-            .modelContainer(container)
-    } catch {
-        fatalError("Failed to create model container.")
-    }
-}
-
-//#Preview {
-//    NewLogView(category: .code)
-//}

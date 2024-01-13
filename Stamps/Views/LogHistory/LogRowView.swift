@@ -9,18 +9,18 @@ import SwiftUI
 import SwiftData
 
 struct LogRowView: View {
-    var log: Stamp
+    var stamp: Stamp
     
     var body: some View {
         HStack {
-            Image(systemName: log.icon)
-                .foregroundStyle(log.color)
+            Image(systemName: stamp.icon)
+                .foregroundStyle(stamp.color)
             
-            Text("\(log.time.time)")
+            Text("\(stamp.time.time)")
             
             
             Spacer()
-            Text(log.log)
+            Text(stamp.title)
             
         }
     }
@@ -32,9 +32,9 @@ struct LogRowView: View {
         let container = try ModelContainer(for: Stamp.self, configurations: config)
         
         return List {
-            LogRowView(log: SAMPLE_STAMPS[0])
+            LogRowView(stamp: SAMPLE_STAMPS[0])
             
-            LogRowView(log: SAMPLE_STAMPS[1])
+            LogRowView(stamp: SAMPLE_STAMPS[1])
         }
             .modelContainer(container)
     } catch {

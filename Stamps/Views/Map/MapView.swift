@@ -22,7 +22,7 @@ enum MapContentPresets: Hashable, CaseIterable, Identifiable, CustomStringConver
     
     var toMapContent: MapContent {
         switch self {
-        case .lastLog: return .lastLog
+        case .lastLog: return .lastStamp
         case .lastWeek: return .stampsAfter(Date().aWeekAgo)
         case .lastMonth: return .stampsAfter(Date().aMonthAgo)
         }
