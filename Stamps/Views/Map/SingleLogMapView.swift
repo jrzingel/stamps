@@ -13,7 +13,7 @@ import SwiftUI
 struct SingleLogMapView: View {
     @ObservedObject var mapModel = MapModel.shared
     
-    var log: Log
+    var log: Stamp
     
     var body: some View {
         ReducedMapView(content: .specificLog(log))
@@ -32,5 +32,5 @@ struct SingleLogMapView: View {
 }
 
 #Preview {
-    SingleLogMapView(log: SAMPLE_LOGS[0])
+    SingleLogMapView(log: SAMPLE_STAMPS[0])
 }

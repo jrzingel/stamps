@@ -16,7 +16,7 @@ struct EditLogView: View {
     @ObservedObject var locationManager = LocationManager.shared
     @State var locationUpdating = false
     
-    @Bindable var log: Log
+    @Bindable var log: Stamp
     
     // TEMP variables
     @State private var isSpecial: Bool = false
@@ -47,7 +47,7 @@ struct EditLogView: View {
                     TextField("Enter new log", text: $log.log)
                 } header: { Text("Create new log")}
                 
-                // TODO: Add query here to suggest similar logs entered in the past
+                // TODO: Add query here to suggest similar stamps entered in the past
                 
             case .restricted(let options):
                 Section {
@@ -147,9 +147,9 @@ struct SelectionCell: View {
 #Preview {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: Log.self, configurations: config)
+        let container = try ModelContainer(for: Stamp.self, configurations: config)
         
-        let example = Log(5625, 176.253, -37.526, "Te Puna", "iPhone", "COMMON", "sample log")
+        let example = Stamp(5625, 176.253, -37.526, "Te Puna", "iPhone", "COMMON", "sample log")
         return EditLogView(log: example)
             .modelContainer(container)
     } catch {
@@ -160,9 +160,9 @@ struct SelectionCell: View {
 #Preview {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: Log.self, configurations: config)
+        let container = try ModelContainer(for: Stamp.self, configurations: config)
         
-        let example = Log(5625, 176.253, -37.526, "Te Puna", "iPhone", "CODE", "sample log")
+        let example = Stamp(5625, 176.253, -37.526, "Te Puna", "iPhone", "CODE", "sample log")
         return EditLogView(log: example)
             .modelContainer(container)
     } catch {

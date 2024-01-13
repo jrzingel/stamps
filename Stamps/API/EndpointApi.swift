@@ -27,16 +27,16 @@ public class EndpointApi: BaseApi {
         }
     }
     
-    /// Get the last log. Migrate away from using this to instead requesting the logs in batch
-    static func getLastLog(completion: @escaping(Result<Log, Error>) -> Void) {
+    /// Get the last log. Migrate away from using this to instead requesting the stamps in batch
+    static func getLastLog(completion: @escaping(Result<Stamp, Error>) -> Void) {
         self.command(path: "/v2/log/last").execute { result in
             switch result {
             case .failure(let error): completion(.failure(error))
             case .success(let response):
                 print("API response '\(response)'")
                 do {
-                    let rawLog = try decoder.decode(RawLog.self, from: Data(response.utf8))
-                    completion(.success(Log(from: rawLog, downloaded: true)))
+                    let rawLog = try decoder.decode(RawStamp.self, from: Data(response.utf8))
+                    completion(.success(Stamp(from: rawLog, downloaded: true)))
                 } catch {
                     completion(.failure(ApiError.cannotParseResponse(error: error)))
                 }
@@ -45,9 +45,9 @@ public class EndpointApi: BaseApi {
         }
     }
     
-    /// Get the last `n: Int` logs.
-    /// Eventually upgrade this to get logs based on any query / feature
-    static func getLastNLogs(num: Int, completion: @escaping(Result<[Log], Error>) -> Void) {
+    /// Get the last `n: Int` stamps.
+    /// Eventually upgrade this to get stamps based on any query / feature
+    static func getLastNLogs(num: Int, completion: @escaping(Result<[Stamp], Error>) -> Void) {
         let params = ["num": num]
         self.command(path: "/v2/log/recent", parameters: params).execute { result in
             switch result {
@@ -55,12 +55,12 @@ public class EndpointApi: BaseApi {
             case .success(let response):
                 print("API response \(response)")
                 do {
-                    let rawLogs = try decoder.decode([RawLog].self, from: Data(response.utf8))
-                    var logs = [Log]()
+                    let rawLogs = try decoder.decode([RawStamp].self, from: Data(response.utf8))
+                    var stamps = [Stamp]()
                     for rawLog in rawLogs {
-                        logs.append(Log(from: rawLog, downloaded: true))
+                        stamps.append(Stamp(from: rawLog, downloaded: true))
                     }
-                    completion(.success(logs))
+                    completion(.success(stamps))
                 } catch {
                     completion(.failure(ApiError.cannotParseResponse(error: error)))
                 }

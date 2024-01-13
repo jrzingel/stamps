@@ -13,8 +13,8 @@ import SwiftData
 
 enum MapContent: Hashable {
     case lastLog
-    case logsAfter(Date)
-    case specificLog(Log)
+    case stampsAfter(Date)
+    case specificLog(Stamp)
 }
 
 let DEFAULT_MAP_POSITION: MapCameraPosition = .userLocation(fallback: .region(MKCoordinateRegion(center: Coord.Tauranga.map, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))))
@@ -24,7 +24,7 @@ let DEFAULT_MAP_POSITION: MapCameraPosition = .userLocation(fallback: .region(MK
 struct ReducedMapView: View {
     @ObservedObject var mapModel = MapModel.shared
     @State var position: MapCameraPosition = DEFAULT_MAP_POSITION
-    @Query var logs: [Log]
+    @Query var stamps: [Stamp]
     // (sort: [SortDescriptor(\Log.time, order: .forward)])
     
     // Last log only
@@ -34,21 +34,21 @@ struct ReducedMapView: View {
         switch content {
         case .lastLog:
             Logger.general.info("MapView> Showing last log only")
-            var descriptor = FetchDescriptor<Log>(sortBy: [SortDescriptor(\.time, order: .reverse)])
+            var descriptor = FetchDescriptor<Stamp>(sortBy: [SortDescriptor(\.time, order: .reverse)])
             descriptor.fetchLimit = 1
-            _logs = Query(descriptor)
+            _stamps = Query(descriptor)
             
-        case .logsAfter(let date):
-            Logger.general.info("MapView> showing all logs after \(date.date) \(date.time)")
+        case .stampsAfter(let date):
+            Logger.general.info("MapView> showing all stamps after \(date.date) \(date.time)")
             
-            _logs = Query(filter: #Predicate<Log> {
+            _stamps = Query(filter: #Predicate<Stamp> {
                 $0.time > date
             })
             
         case .specificLog(let log):
             Logger.general.info("MapView> showing only the given log '\(log.log)'")
             let id = log.id
-            _logs = Query(filter: #Predicate<Log> {
+            _stamps = Query(filter: #Predicate<Stamp> {
                 $0.id == id
             })
         }
@@ -56,13 +56,13 @@ struct ReducedMapView: View {
     
     var body: some View {
         let boundPosition = Binding<MapCameraPosition>(
-            get: { updateCameraPosition(logs) },  // FIXME: Currently this is called quite frequently... not the most optimal
+            get: { updateCameraPosition(stamps) },  // FIXME: Currently this is called quite frequently... not the most optimal
             set: { self.position = $0}
         )
         
         return Map(position: boundPosition, interactionModes: [.pan, .rotate, .zoom]) {
             
-            ForEach(logs) { log in
+            ForEach(stamps) { log in
                 Marker(log.log, coordinate: log.coord.map)
             }
             
@@ -78,18 +78,18 @@ struct ReducedMapView: View {
     
     // MARK: - Methods
     
-    /// Update the camera position to contain all the logs present
-    func updateCameraPosition(_ logs: [Log]) -> MapCameraPosition {
+    /// Update the camera position to contain all the stamps present
+    func updateCameraPosition(_ stamps: [Stamp]) -> MapCameraPosition {
         // Coordinate math...
         Logger.general.info("MapView> Recalculating initial map coordinate region")
-        if logs.isEmpty {
+        if stamps.isEmpty {
             return DEFAULT_MAP_POSITION
         }
-        var minLat = logs[0].coord.latitude
-        var maxLat = logs[0].coord.latitude
-        var minLon = logs[0].coord.longitude
-        var maxLon = logs[0].coord.longitude
-        for log in logs {
+        var minLat = stamps[0].coord.latitude
+        var maxLat = stamps[0].coord.latitude
+        var minLon = stamps[0].coord.longitude
+        var maxLon = stamps[0].coord.longitude
+        for log in stamps {
             if log.coord.latitude > maxLat { maxLat = log.coord.latitude }
             if log.coord.latitude < minLat { minLat = log.coord.latitude }
             if log.coord.longitude > maxLon { maxLon = log.coord.longitude }

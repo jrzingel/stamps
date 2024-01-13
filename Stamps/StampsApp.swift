@@ -12,7 +12,7 @@ import SwiftData
 struct StampsApp: App {
     var sharedModelContainer: ModelContainer = {
         let schema = Schema([
-            Log.self,
+            Stamp.self,
         ])
         let modelConfiguration = ModelConfiguration(schema: schema, isStoredInMemoryOnly: false)
 

@@ -9,11 +9,11 @@ import SwiftUI
 import SwiftData
 
 // TODO: Add some information like how far away the log was and how long ago it occured
-// Perhaps also some information about the number of logs that occured like this?
+// Perhaps also some information about the number of stamps that occured like this?
 
 struct LogDetailView: View {
     @ObservedObject var mapModel = MapModel.shared
-    var log: Log
+    var log: Stamp
     
     var body: some View {
         GeometryReader { geometry in
@@ -85,9 +85,9 @@ struct LogDetailView: View {
 #Preview {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: Log.self, configurations: config)
+        let container = try ModelContainer(for: Stamp.self, configurations: config)
         
-        return LogDetailView(log: SAMPLE_LOGS[0])
+        return LogDetailView(log: SAMPLE_STAMPS[0])
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container.")

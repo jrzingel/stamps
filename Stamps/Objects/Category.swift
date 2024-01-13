@@ -106,10 +106,10 @@ enum Category: CustomStringConvertible, CaseIterable, Codable, Identifiable {
         case any                        // Anything is valid
         case restricted([String])       // Only set options are valid
         case singleton(String)          // One one option is valid (effectively ignored)
-        case invalid                    // New logs should not conform to this type of category
+        case invalid                    // New stamps should not conform to this type of category
     }
     
-    // the associated selection if applicable. These are not enforced on old logs but new logs must conform to them
+    // the associated selection if applicable. These are not enforced on old stamps but new stamps must conform to them
     // NOTE: Each categories options must be distinct! (Otherwise the app will crash later)
     var selection: Selection {
         switch self {

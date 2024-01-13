@@ -12,16 +12,16 @@ import MapKit
 /// Where the navigation stack can take us
 enum Destination: Hashable {
     case map
-    case editLog(Log)
-    case viewLog(Log)
+    case editLog(Stamp)
+    case viewLog(Stamp)
     case history
-    case mapSingleLog(Log)
+    case mapSingleLog(Stamp)
 }
 
-// Add new view where you can select a category and see stats for it for all logs conforming to it
+// Add new view where you can select a category and see stats for it for all stamps conforming to it
 
 struct Sidebar: View {
-    @ObservedObject var logManager = LogManager.shared
+    @ObservedObject var logManager = StampManager.shared
     @StateObject private var navigationStore = NavigationStore()
     @Environment(\.modelContext) var modelContext
     
@@ -39,9 +39,9 @@ struct Sidebar: View {
                 }
                     
                 Section {
-                    Button("Get last log", systemImage: "bolt.fill", action: { logManager.getLastLog(context: modelContext) })
+                    Button("Get last log", systemImage: "bolt.fill", action: { logManager.getLastStamp(context: modelContext) })
                     
-                    Button("Get last 100 logs", systemImage: "tray.and.arrow.down.fill", action: { logManager.getLastNLogs(context: modelContext, num: 100) })
+                    Button("Get last 100 stamps", systemImage: "tray.and.arrow.down.fill", action: { logManager.getLastNStamps(context: modelContext, num: 100) })
                     
                 } header: {
                     HStack {

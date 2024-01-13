@@ -8,20 +8,20 @@
 import Foundation
 
 class Day: Identifiable {
-    var logs: [Log]
+    var stamps: [Stamp]
     var day: String
     
     init(_ day: String) {
         self.day = day
-        self.logs = []
+        self.stamps = []
     }
     
-    func add(_ log: Log) {
-        logs.append(log)
+    func add(_ log: Stamp) {
+        stamps.append(log)
     }
     
     /// Reverse the log order
     func reverseLogList() {
-        logs.reverse()
+        stamps.reverse()
     }
 }

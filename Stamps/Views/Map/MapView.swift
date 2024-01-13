@@ -23,8 +23,8 @@ enum MapContentPresets: Hashable, CaseIterable, Identifiable, CustomStringConver
     var toMapContent: MapContent {
         switch self {
         case .lastLog: return .lastLog
-        case .lastWeek: return .logsAfter(Date().aWeekAgo)
-        case .lastMonth: return .logsAfter(Date().aMonthAgo)
+        case .lastWeek: return .stampsAfter(Date().aWeekAgo)
+        case .lastMonth: return .stampsAfter(Date().aMonthAgo)
         }
     }
     
@@ -56,7 +56,7 @@ struct MapView: View {
                         }
                     }
                     
-                    Menu("Displayed logs", systemImage: "calendar") {
+                    Menu("Displayed stamps", systemImage: "calendar") {
                         Picker("Content", selection: $mapContent) {
                             ForEach(MapContentPresets.allCases) { preset in
                                 Text(preset.description)

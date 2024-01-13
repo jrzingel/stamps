@@ -15,7 +15,7 @@ import SwiftData
 public typealias UnixTime = Int
 
 /// A raw structure of a log. These objects are parsed by the API
-struct RawLog: Decodable {
+struct RawStamp: Decodable {
     var time: Int
     var longitude: String
     var latitude: String
@@ -27,7 +27,7 @@ struct RawLog: Decodable {
 
 /// A functional log object with many computed properties
 @Model
-class Log: Identifiable {
+class Stamp: Identifiable {
     var id: String = UUID().uuidString
     @Attribute(.unique) var time: Date      // Force only one log at a time
     var coord: Coord
@@ -40,7 +40,7 @@ class Log: Identifiable {
     var uploaded: Bool
     
     /// Convert from a `RawLog` to `Log`
-    init(from rawLog: RawLog, downloaded: Bool = false) {
+    init(from rawLog: RawStamp, downloaded: Bool = false) {
         self.suburb = rawLog.suburb
         self.device = rawLog.device
         
@@ -54,7 +54,7 @@ class Log: Identifiable {
     
     /// Only use for debugging purposes
     convenience init(_ unixTime: UnixTime, _ longitude: Double, _ latitude: Double, _ suburb: String, _ device: String, _ rawType: String, _ log: String) {
-        self.init(from: RawLog(time: unixTime, longitude: String(longitude), latitude: String(latitude), suburb: suburb, device: device, type: rawType, log: log))
+        self.init(from: RawStamp(time: unixTime, longitude: String(longitude), latitude: String(latitude), suburb: suburb, device: device, type: rawType, log: log))
     }
     
     /// Create a log with a "default" configuration
@@ -81,9 +81,9 @@ class Log: Identifiable {
     
 }
 
-let SAMPLE_LOGS: [Log] = [
-    Log(5625, 176.253, -37.526, "Te Puna", "iPhone", "COMMON", "sample log"),
-    Log(5752, 176.253, -37.526, "Te Puna", "iPhone", "UNCOMMON", "dddd"),
-    Log(5821, 176.253, -37.526, "Te Puke", "iPhone", "CODE", "morerrrr"),
-    Log(6111, 176.253, -37.526, "Auckland", "iPhone", "UNI", "someothers"),
+let SAMPLE_STAMPS: [Stamp] = [
+    Stamp(5625, 176.253, -37.526, "Te Puna", "iPhone", "COMMON", "sample log"),
+    Stamp(5752, 176.253, -37.526, "Te Puna", "iPhone", "UNCOMMON", "dddd"),
+    Stamp(5821, 176.253, -37.526, "Te Puke", "iPhone", "CODE", "morerrrr"),
+    Stamp(6111, 176.253, -37.526, "Auckland", "iPhone", "UNI", "someothers"),
 ]

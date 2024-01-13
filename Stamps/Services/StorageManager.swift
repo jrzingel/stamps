@@ -9,7 +9,7 @@ import Foundation
 import SwiftData
 
 // Runs in the background and updates the SwiftData database if necessary
-// Use to upload the logs or resync them with new data
+// Use to upload the stamps or resync them with new data
 
 final class StorageManager: ObservableObject {
     public static var shared = StorageManager()

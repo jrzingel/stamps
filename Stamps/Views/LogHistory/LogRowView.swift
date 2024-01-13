@@ -9,7 +9,7 @@ import SwiftUI
 import SwiftData
 
 struct LogRowView: View {
-    var log: Log
+    var log: Stamp
     
     var body: some View {
         HStack {
@@ -29,12 +29,12 @@ struct LogRowView: View {
 #Preview {
     do {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: Log.self, configurations: config)
+        let container = try ModelContainer(for: Stamp.self, configurations: config)
         
         return List {
-            LogRowView(log: SAMPLE_LOGS[0])
+            LogRowView(log: SAMPLE_STAMPS[0])
             
-            LogRowView(log: SAMPLE_LOGS[1])
+            LogRowView(log: SAMPLE_STAMPS[1])
         }
             .modelContainer(container)
     } catch {
