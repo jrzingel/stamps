@@ -64,12 +64,10 @@
 		E8B5188E2B4A559A00925020 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5187F2B4A559A00925020 /* MapModel.swift */; };
 		E8B5188F2B4A559A00925020 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5187F2B4A559A00925020 /* MapModel.swift */; };
 		E8B518902B4A559A00925020 /* LogRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518812B4A559A00925020 /* LogRowView.swift */; };
-		E8B518912B4A559A00925020 /* LogRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518812B4A559A00925020 /* LogRowView.swift */; };
 		E8B518922B4A559A00925020 /* EditLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518822B4A559A00925020 /* EditLogView.swift */; };
 		E8B518942B4A559A00925020 /* LogListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518832B4A559A00925020 /* LogListView.swift */; };
 		E8B518952B4A559A00925020 /* LogListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518832B4A559A00925020 /* LogListView.swift */; };
 		E8B518962B4A559A00925020 /* LogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518842B4A559A00925020 /* LogDetailView.swift */; };
-		E8B518972B4A559A00925020 /* LogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518842B4A559A00925020 /* LogDetailView.swift */; };
 		E8B518982B4A559A00925020 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518852B4A559A00925020 /* Sidebar.swift */; };
 		E8B5189A2B4A559A00925020 /* PrettyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518872B4A559A00925020 /* PrettyIcon.swift */; };
 		E8B5189B2B4A559A00925020 /* PrettyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518872B4A559A00925020 /* PrettyIcon.swift */; };
@@ -566,7 +564,6 @@
 				E8B518772B4A559000925020 /* StampManager.swift in Sources */,
 				E8B518752B4A559000925020 /* StorageManager.swift in Sources */,
 				E8B518492B4A550A00925020 /* Configuration.swift in Sources */,
-				E8B518972B4A559A00925020 /* LogDetailView.swift in Sources */,
 				E8B5181F2B4A517D00925020 /* StampsTests.swift in Sources */,
 				E8B518612B4A557F00925020 /* Stamp.swift in Sources */,
 				E8B518532B4A553900925020 /* Result+Success.swift in Sources */,
@@ -575,7 +572,6 @@
 				E8B518652B4A557F00925020 /* Day.swift in Sources */,
 				E8B5189B2B4A559A00925020 /* PrettyIcon.swift in Sources */,
 				E8B518512B4A553900925020 /* Date.swift in Sources */,
-				E8B518912B4A559A00925020 /* LogRowView.swift in Sources */,
 				E8B5188D2B4A559A00925020 /* ReducedMapView.swift in Sources */,
 				E8B518632B4A557F00925020 /* Logger.swift in Sources */,
 				E8B5188B2B4A559A00925020 /* SingleLogMapView.swift in Sources */,

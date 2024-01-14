@@ -57,6 +57,7 @@ struct EditLogView: View {
             
             // MARK: Locations
             
+            // TODO: Add indicator of how far away these logs are
             Section {
                 ForEach(stamp.coords.indices, id: \.self) { index in
                     Label(title: {
