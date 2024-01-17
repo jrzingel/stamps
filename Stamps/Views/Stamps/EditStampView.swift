@@ -12,7 +12,7 @@ import SwiftData
 // Allow a selection of the desired options
 // Different categories should offer different defaults!
 
-struct EditLogView: View {
+struct EditStampView: View {
     @ObservedObject var locationManager = LocationManager.shared
     @State var locationUpdating = false
     
@@ -144,7 +144,7 @@ struct SelectionCell: View {
         let container = try ModelContainer(for: Stamp.self, configurations: config)
         
         let example = Stamp()
-        return EditLogView(stamp: example)
+        return EditStampView(stamp: example)
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container.")

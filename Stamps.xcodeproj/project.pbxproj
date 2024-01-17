@@ -63,11 +63,11 @@
 		E8B5188D2B4A559A00925020 /* ReducedMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5187E2B4A559A00925020 /* ReducedMapView.swift */; };
 		E8B5188E2B4A559A00925020 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5187F2B4A559A00925020 /* MapModel.swift */; };
 		E8B5188F2B4A559A00925020 /* MapModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5187F2B4A559A00925020 /* MapModel.swift */; };
-		E8B518902B4A559A00925020 /* LogRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518812B4A559A00925020 /* LogRowView.swift */; };
-		E8B518922B4A559A00925020 /* EditLogView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518822B4A559A00925020 /* EditLogView.swift */; };
-		E8B518942B4A559A00925020 /* LogListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518832B4A559A00925020 /* LogListView.swift */; };
-		E8B518952B4A559A00925020 /* LogListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518832B4A559A00925020 /* LogListView.swift */; };
-		E8B518962B4A559A00925020 /* LogDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518842B4A559A00925020 /* LogDetailView.swift */; };
+		E8B518902B4A559A00925020 /* StampRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518812B4A559A00925020 /* StampRowView.swift */; };
+		E8B518922B4A559A00925020 /* EditStampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518822B4A559A00925020 /* EditStampView.swift */; };
+		E8B518942B4A559A00925020 /* StampListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518832B4A559A00925020 /* StampListView.swift */; };
+		E8B518952B4A559A00925020 /* StampListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518832B4A559A00925020 /* StampListView.swift */; };
+		E8B518962B4A559A00925020 /* StampDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518842B4A559A00925020 /* StampDetailView.swift */; };
 		E8B518982B4A559A00925020 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518852B4A559A00925020 /* Sidebar.swift */; };
 		E8B5189A2B4A559A00925020 /* PrettyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518872B4A559A00925020 /* PrettyIcon.swift */; };
 		E8B5189B2B4A559A00925020 /* PrettyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518872B4A559A00925020 /* PrettyIcon.swift */; };
@@ -131,10 +131,10 @@
 		E8B5187D2B4A559A00925020 /* SingleLogMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SingleLogMapView.swift; sourceTree = "<group>"; };
 		E8B5187E2B4A559A00925020 /* ReducedMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReducedMapView.swift; sourceTree = "<group>"; };
 		E8B5187F2B4A559A00925020 /* MapModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MapModel.swift; sourceTree = "<group>"; };
-		E8B518812B4A559A00925020 /* LogRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogRowView.swift; sourceTree = "<group>"; };
-		E8B518822B4A559A00925020 /* EditLogView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditLogView.swift; sourceTree = "<group>"; };
-		E8B518832B4A559A00925020 /* LogListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogListView.swift; sourceTree = "<group>"; };
-		E8B518842B4A559A00925020 /* LogDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LogDetailView.swift; sourceTree = "<group>"; };
+		E8B518812B4A559A00925020 /* StampRowView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampRowView.swift; sourceTree = "<group>"; };
+		E8B518822B4A559A00925020 /* EditStampView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = EditStampView.swift; sourceTree = "<group>"; };
+		E8B518832B4A559A00925020 /* StampListView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampListView.swift; sourceTree = "<group>"; };
+		E8B518842B4A559A00925020 /* StampDetailView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StampDetailView.swift; sourceTree = "<group>"; };
 		E8B518852B4A559A00925020 /* Sidebar.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Sidebar.swift; sourceTree = "<group>"; };
 		E8B518872B4A559A00925020 /* PrettyIcon.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PrettyIcon.swift; sourceTree = "<group>"; };
 		E8F7A5F22B5354D900CC1552 /* Int+Letter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Int+Letter.swift"; sourceTree = "<group>"; };
@@ -308,7 +308,7 @@
 			isa = PBXGroup;
 			children = (
 				E8B5187B2B4A559A00925020 /* Map */,
-				E8B518802B4A559A00925020 /* LogHistory */,
+				E8B518802B4A559A00925020 /* Stamps */,
 				E8B518852B4A559A00925020 /* Sidebar.swift */,
 				E8B518862B4A559A00925020 /* Helpers */,
 			);
@@ -326,15 +326,15 @@
 			path = Map;
 			sourceTree = "<group>";
 		};
-		E8B518802B4A559A00925020 /* LogHistory */ = {
+		E8B518802B4A559A00925020 /* Stamps */ = {
 			isa = PBXGroup;
 			children = (
-				E8B518812B4A559A00925020 /* LogRowView.swift */,
-				E8B518822B4A559A00925020 /* EditLogView.swift */,
-				E8B518832B4A559A00925020 /* LogListView.swift */,
-				E8B518842B4A559A00925020 /* LogDetailView.swift */,
+				E8B518812B4A559A00925020 /* StampRowView.swift */,
+				E8B518822B4A559A00925020 /* EditStampView.swift */,
+				E8B518832B4A559A00925020 /* StampListView.swift */,
+				E8B518842B4A559A00925020 /* StampDetailView.swift */,
 			);
-			path = LogHistory;
+			path = Stamps;
 			sourceTree = "<group>";
 		};
 		E8B518862B4A559A00925020 /* Helpers */ = {
@@ -531,7 +531,7 @@
 				E8B5188C2B4A559A00925020 /* ReducedMapView.swift in Sources */,
 				E8B5186E2B4A557F00925020 /* Coord.swift in Sources */,
 				E8B518422B4A550A00925020 /* BaseConfiguration.swift in Sources */,
-				E8B518962B4A559A00925020 /* LogDetailView.swift in Sources */,
+				E8B518962B4A559A00925020 /* StampDetailView.swift in Sources */,
 				E8B5188A2B4A559A00925020 /* SingleLogMapView.swift in Sources */,
 				E8B518982B4A559A00925020 /* Sidebar.swift in Sources */,
 				E8B5180E2B4A517C00925020 /* ContentView.swift in Sources */,
@@ -539,7 +539,7 @@
 				E8B518642B4A557F00925020 /* Day.swift in Sources */,
 				E8B518402B4A550A00925020 /* BaseApi.swift in Sources */,
 				E8B518742B4A559000925020 /* StorageManager.swift in Sources */,
-				E8B518902B4A559A00925020 /* LogRowView.swift in Sources */,
+				E8B518902B4A559A00925020 /* StampRowView.swift in Sources */,
 				E8B518622B4A557F00925020 /* Logger.swift in Sources */,
 				E8B518102B4A517C00925020 /* Item.swift in Sources */,
 				E8B518482B4A550A00925020 /* Configuration.swift in Sources */,
@@ -551,9 +551,9 @@
 				E8B518782B4A559000925020 /* LocationManager.swift in Sources */,
 				E8B5180C2B4A517C00925020 /* StampsApp.swift in Sources */,
 				E8B518662B4A557F00925020 /* NavigationStore.swift in Sources */,
-				E8B518942B4A559A00925020 /* LogListView.swift in Sources */,
+				E8B518942B4A559A00925020 /* StampListView.swift in Sources */,
 				E8B5186C2B4A557F00925020 /* TaskCancellable.swift in Sources */,
-				E8B518922B4A559A00925020 /* EditLogView.swift in Sources */,
+				E8B518922B4A559A00925020 /* EditStampView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -568,7 +568,7 @@
 				E8B518612B4A557F00925020 /* Stamp.swift in Sources */,
 				E8B518532B4A553900925020 /* Result+Success.swift in Sources */,
 				E8F7A5F42B53550B00CC1552 /* Int+Letter.swift in Sources */,
-				E8B518952B4A559A00925020 /* LogListView.swift in Sources */,
+				E8B518952B4A559A00925020 /* StampListView.swift in Sources */,
 				E8B518652B4A557F00925020 /* Day.swift in Sources */,
 				E8B5189B2B4A559A00925020 /* PrettyIcon.swift in Sources */,
 				E8B518512B4A553900925020 /* Date.swift in Sources */,

@@ -8,7 +8,7 @@
 import SwiftUI
 import SwiftData
 
-struct LogRowView: View {
+struct StampRowView: View {
     var stamp: Stamp
     
     var body: some View {
@@ -32,9 +32,9 @@ struct LogRowView: View {
         let container = try ModelContainer(for: Stamp.self, configurations: config)
         
         return List {
-            LogRowView(stamp: SAMPLE_STAMPS[0])
+            StampRowView(stamp: SAMPLE_STAMPS[0])
             
-            LogRowView(stamp: SAMPLE_STAMPS[1])
+            StampRowView(stamp: SAMPLE_STAMPS[1])
         }
             .modelContainer(container)
     } catch {

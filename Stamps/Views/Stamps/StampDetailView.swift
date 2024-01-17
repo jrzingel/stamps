@@ -11,7 +11,7 @@ import SwiftData
 // TODO: Add some information like how far away the log was and how long ago it occured
 // Perhaps also some information about the number of stamps that occured like this?
 
-struct LogDetailView: View {
+struct StampDetailView: View {
     @ObservedObject var mapModel = MapModel.shared
     var stamp: Stamp
     
@@ -66,7 +66,7 @@ struct LogDetailView: View {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Stamp.self, configurations: config)
         
-        return LogDetailView(stamp: SAMPLE_STAMPS[0])
+        return StampDetailView(stamp: SAMPLE_STAMPS[0])
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container.")

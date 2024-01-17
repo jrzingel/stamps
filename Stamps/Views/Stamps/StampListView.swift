@@ -12,7 +12,7 @@ import SwiftData
 // Have each day as a different section with
 // TODO: Show upload button
 
-struct LogListView: View {
+struct StampListView: View {
     @Query(sort: \Stamp.time, order: .reverse) var stamps: [Stamp]
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var navigationStore: NavigationStore
@@ -20,11 +20,11 @@ struct LogListView: View {
     
     var body: some View {
         List {
-            ForEach(groupLogs(stamps: stamps)) { day in
+            ForEach(groupStamps(stamps: stamps)) { day in
                 Section {
                     ForEach(day.stamps) { log in
                         NavigationLink(value: self.editMode ? Destination.editLog(log) : Destination.viewLog(log)) {
-                            LogRowView(stamp: log)
+                            StampRowView(stamp: log)
                         }
                     }
                     .onDelete(perform: deleteLog)
@@ -46,7 +46,7 @@ struct LogListView: View {
     }
     
     /// Partition the stamps by each day
-    func groupLogs(stamps: [Stamp]) -> [Day] {
+    func groupStamps(stamps: [Stamp]) -> [Day] {
         if stamps.isEmpty {
             return [Day("no stamps")]
         }
@@ -107,7 +107,7 @@ struct LogListView: View {
         let config = ModelConfiguration(isStoredInMemoryOnly: true)
         let container = try ModelContainer(for: Stamp.self, configurations: config)
         
-        return LogListView()
+        return StampListView()
             .modelContainer(container)
     } catch {
         fatalError("Failed to create model container.")
