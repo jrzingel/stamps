@@ -41,7 +41,7 @@ class Stamp: Identifiable {
     var desc: String
     
     
-    /// Convert from a `RawLog` to `Log`
+    /// Convert from a `RawLog` to `Log`. Usually when syncing from the API
     init(from rawStamp: RawStamp, lastSynced: Date? = nil) {
         self.device = rawStamp.device
         self.time = Date(timeIntervalSince1970: Double(rawStamp.time))
@@ -54,15 +54,25 @@ class Stamp: Identifiable {
         self.lastUpdated = Date()
     }
     
+    /// Create a new stamp with a "default" configuration
+    init() {
+        self.device = Devices.this.description
+        self.time = Date()
+        self.coords = []
+        self.suburb = ""
+        self.category = .none
+        self.title = ""
+        self.desc = ""
+        self.lastSynced = nil
+        self.lastUpdated = Date()
+    }
+    
     /// Only use for debugging purposes
     convenience init(_ unixTime: UnixTime, _ longitude: Double, _ latitude: Double, _ suburb: String, _ device: String, _ rawType: String, _ log: String) {
         self.init(from: RawStamp(time: unixTime, coords: [Coord(longitude: String(longitude), latitude: String(latitude))], suburb: suburb, device: device, category: rawType.toCategory(), title: log, desc: ""))
     }
     
-    /// Create a log with a "default" configuration
-    convenience init() {
-        self.init(from: RawStamp(time: 5525630, coords: [Coord.Tauranga], suburb: "Tauranga", device: Devices.this.description, category: .generic, title: "Example title", desc: "Example description"))
-    }
+    
     
     // MARK: Helper map functions
     

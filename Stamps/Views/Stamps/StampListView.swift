@@ -23,7 +23,7 @@ struct StampListView: View {
             ForEach(groupStamps(stamps: stamps)) { day in
                 Section {
                     ForEach(day.stamps) { log in
-                        NavigationLink(value: self.editMode ? Destination.editLog(log) : Destination.viewLog(log)) {
+                        NavigationLink(value: self.editMode ? Destination.editStamp(log) : Destination.viewStamp(log)) {
                             StampRowView(stamp: log)
                         }
                     }
@@ -96,9 +96,9 @@ struct StampListView: View {
     
     /// Create new log
     func addLog() {
-        let log = Stamp()
-        modelContext.insert(log)
-        navigationStore.path = NavigationPath([Destination.history, Destination.editLog(log)])
+        let stamp = Stamp()
+        modelContext.insert(stamp)
+        navigationStore.path = NavigationPath([Destination.history, Destination.editStamp(stamp)])
     }
 }
 

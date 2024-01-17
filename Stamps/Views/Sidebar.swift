@@ -12,8 +12,8 @@ import MapKit
 /// Where the navigation stack can take us
 enum Destination: Hashable {
     case map
-    case editLog(Stamp)
-    case viewLog(Stamp)
+    case editStamp(Stamp)
+    case viewStamp(Stamp)
     case history
     case mapSingleLog(Stamp)
 }
@@ -59,9 +59,9 @@ struct Sidebar: View {
                 switch destination {
                 case .map:
                     MapView()
-                case .editLog(let log):
+                case .editStamp(let log):
                     EditStampView(stamp: log)
-                case .viewLog(let log):
+                case .viewStamp(let log):
                     StampDetailView(stamp: log)
                 case .history:
                     StampListView()

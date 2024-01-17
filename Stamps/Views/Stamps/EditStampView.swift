@@ -18,18 +18,11 @@ struct EditStampView: View {
     
     @Bindable var stamp: Stamp
     
-    // TEMP variables
-    @State private var isSpecial: Bool = false
-    
     
     var body: some View {
         Form {
             Section {
                 DatePicker("Time", selection: $stamp.time)
-                
-                Toggle(isOn: $isSpecial) {
-                    Text("Special log")
-                }
                 
                 Picker("Category", selection: $stamp.category)  {
                     ForEach(Category.allCases) { category in
