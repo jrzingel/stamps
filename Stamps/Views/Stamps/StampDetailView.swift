@@ -57,6 +57,13 @@ struct StampDetailView: View {
                     Text("Open photos")
                 }
             }
+            
+            .toolbar {
+                NavigationLink(value: Destination.editStamp(stamp)) {
+                    Text("Edit")
+                    //                    Label("Edit", systemImage: "")
+                }
+            }
         }
     }
 }

@@ -61,11 +61,6 @@ enum Category: CustomStringConvertible, CaseIterable, Codable, Identifiable {
         case .activity: return "bicycle"
         }
     }
-    
-    // Use instead of `CaseIterable` to remove "unknown" option.
-    static var allCases: [Category] {
-        return [.code, .travel, .resolution, .music, .activity]
-    }
 }
 
 extension String {

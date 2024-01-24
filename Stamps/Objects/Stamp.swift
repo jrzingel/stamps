@@ -58,7 +58,7 @@ class Stamp: Identifiable {
     init() {
         self.device = Devices.this.description
         self.time = Date()
-        self.coords = []
+        self.coords = [Coord.Tauranga]
         self.suburb = ""
         self.category = .none
         self.title = ""

@@ -68,7 +68,6 @@ struct StampListView: View {
             currentDay.reverseLogList()
             days.append(currentDay)
         }
-        print(days)
         return days
     }
     

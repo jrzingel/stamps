@@ -33,6 +33,8 @@ struct EditStampView: View {
                         }
                     }
                 }
+                
+                Label(stamp.device, systemImage: "pc")
             } header: { Text("Base configuration")}
             
             // MARK: Stamp info
@@ -42,7 +44,8 @@ struct EditStampView: View {
             } header: { Text("Title") }
             
             Section {
-                TextField("Description", text: $stamp.desc)
+                TextField("Description", text: $stamp.desc, axis: .vertical)
+                    .lineLimit(5...10)
             } header: { Text("Description")}
             
             // TODO: Add query here to suggest similar stamps entered in the past
@@ -78,13 +81,7 @@ struct EditStampView: View {
                 }
             }
             
-            Section {
-                Label(stamp.device, systemImage: "pc")
-                
-                Label(stamp.category.description, systemImage: "shippingbox.fill")
-            } header: {
-                Text("Non-Configurable")
-            }
+
         }
         .onAppear {
             if stamp.coords[0].isZero {
