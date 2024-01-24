@@ -16,6 +16,7 @@ enum Destination: Hashable {
     case viewStamp(Stamp)
     case history
     case mapSingleLog(Stamp)
+    case settings
 }
 
 // Add new view where you can select a category and see stats for it for all stamps conforming to it
@@ -52,6 +53,12 @@ struct Sidebar: View {
                     }
                 }
                 
+                Section {
+                    NavigationLink(value: Destination.settings) {
+                        Label("Settings", systemImage: "gear")
+                    }
+                }
+                
             }
             .listStyle(.insetGrouped)
             .navigationTitle("Logs")
@@ -67,6 +74,8 @@ struct Sidebar: View {
                     StampListView()
                 case .mapSingleLog(let log):
                     SingleLogMapView(log: log)
+                case .settings:
+                    SettingsView()
                 }
             }
         }
