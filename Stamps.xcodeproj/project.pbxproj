@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		557522E8F8A3378D623245BE /* Pods_Stamps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263C13D38B5F8BCB86989632 /* Pods_Stamps.framework */; };
 		E866E4AF2B6100710095B0B8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866E4AE2B6100710095B0B8 /* SettingsView.swift */; };
+		E866E4B12B621FDB0095B0B8 /* PreviewSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866E4B02B621FDB0095B0B8 /* PreviewSampleData.swift */; };
 		E8B5180C2B4A517C00925020 /* StampsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5180B2B4A517C00925020 /* StampsApp.swift */; };
 		E8B5180E2B4A517C00925020 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5180D2B4A517C00925020 /* ContentView.swift */; };
 		E8B518102B4A517C00925020 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B5180F2B4A517C00925020 /* Item.swift */; };
@@ -67,7 +68,6 @@
 		E8B518902B4A559A00925020 /* StampRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518812B4A559A00925020 /* StampRowView.swift */; };
 		E8B518922B4A559A00925020 /* EditStampView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518822B4A559A00925020 /* EditStampView.swift */; };
 		E8B518942B4A559A00925020 /* StampListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518832B4A559A00925020 /* StampListView.swift */; };
-		E8B518952B4A559A00925020 /* StampListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518832B4A559A00925020 /* StampListView.swift */; };
 		E8B518962B4A559A00925020 /* StampDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518842B4A559A00925020 /* StampDetailView.swift */; };
 		E8B518982B4A559A00925020 /* Sidebar.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518852B4A559A00925020 /* Sidebar.swift */; };
 		E8B5189A2B4A559A00925020 /* PrettyIcon.swift in Sources */ = {isa = PBXBuildFile; fileRef = E8B518872B4A559A00925020 /* PrettyIcon.swift */; };
@@ -98,6 +98,7 @@
 		3E4353941D59B025EB505ED2 /* Pods-Stamps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stamps.release.xcconfig"; path = "Target Support Files/Pods-Stamps/Pods-Stamps.release.xcconfig"; sourceTree = "<group>"; };
 		5B90476E82209BE925669294 /* Pods-Stamps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stamps.debug.xcconfig"; path = "Target Support Files/Pods-Stamps/Pods-Stamps.debug.xcconfig"; sourceTree = "<group>"; };
 		E866E4AE2B6100710095B0B8 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		E866E4B02B621FDB0095B0B8 /* PreviewSampleData.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewSampleData.swift; sourceTree = "<group>"; };
 		E8B518082B4A517C00925020 /* Stamps.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Stamps.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E8B5180B2B4A517C00925020 /* StampsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StampsApp.swift; sourceTree = "<group>"; };
 		E8B5180D2B4A517C00925020 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -238,6 +239,7 @@
 			isa = PBXGroup;
 			children = (
 				E8B518142B4A517D00925020 /* Preview Assets.xcassets */,
+				E866E4B02B621FDB0095B0B8 /* PreviewSampleData.swift */,
 			);
 			path = "Preview Content";
 			sourceTree = "<group>";
@@ -557,6 +559,7 @@
 				E866E4AF2B6100710095B0B8 /* SettingsView.swift in Sources */,
 				E8B5186A2B4A557F00925020 /* Devices.swift in Sources */,
 				E8B518682B4A557F00925020 /* Category.swift in Sources */,
+				E866E4B12B621FDB0095B0B8 /* PreviewSampleData.swift in Sources */,
 				E8F7A5F32B5354D900CC1552 /* Int+Letter.swift in Sources */,
 				E8B518502B4A553900925020 /* Date.swift in Sources */,
 				E8B518762B4A559000925020 /* StampManager.swift in Sources */,
@@ -580,7 +583,6 @@
 				E8B518612B4A557F00925020 /* Stamp.swift in Sources */,
 				E8B518532B4A553900925020 /* Result+Success.swift in Sources */,
 				E8F7A5F42B53550B00CC1552 /* Int+Letter.swift in Sources */,
-				E8B518952B4A559A00925020 /* StampListView.swift in Sources */,
 				E8B518652B4A557F00925020 /* Day.swift in Sources */,
 				E8B5189B2B4A559A00925020 /* PrettyIcon.swift in Sources */,
 				E8B518512B4A553900925020 /* Date.swift in Sources */,

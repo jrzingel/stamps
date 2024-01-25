@@ -32,5 +32,5 @@ struct SingleLogMapView: View {
 }
 
 #Preview {
-    SingleLogMapView(log: SAMPLE_STAMPS[0])
+    SingleLogMapView(log: Stamp.samples[0])
 }

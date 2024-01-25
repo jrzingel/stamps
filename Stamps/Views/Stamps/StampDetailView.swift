@@ -65,17 +65,11 @@ struct StampDetailView: View {
                 }
             }
         }
+        .navigationTitle("Stamp")
     }
 }
 
 #Preview {
-    do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: Stamp.self, configurations: config)
-        
-        return StampDetailView(stamp: SAMPLE_STAMPS[0])
-            .modelContainer(container)
-    } catch {
-        fatalError("Failed to create model container.")
-    }
+    StampDetailView(stamp: Stamp.samples[0])
+        .modelContainer(for: Stamp.self, inMemory: true)
 }

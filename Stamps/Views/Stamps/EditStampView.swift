@@ -88,6 +88,7 @@ struct EditStampView: View {
                 updateLocation(index: 0)
             }
         }
+        .navigationTitle("Edit Stamp")
         
     }
     

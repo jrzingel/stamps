@@ -18,6 +18,8 @@ struct StampRowView: View {
             
             Text("\(stamp.time.time)")
             
+            Image(systemName: stamp.isSynced ? "cloud.fill" : "cloud")
+                .foregroundStyle(Color.accentColor)
             
             Spacer()
             Text(stamp.title)
@@ -27,18 +29,10 @@ struct StampRowView: View {
 }
 
 #Preview {
-    do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: Stamp.self, configurations: config)
+    List {
+        StampRowView(stamp: Stamp.samples[0])
         
-        return List {
-            StampRowView(stamp: SAMPLE_STAMPS[0])
-            
-            StampRowView(stamp: SAMPLE_STAMPS[1])
-        }
-            .modelContainer(container)
-    } catch {
-        fatalError("Failed to create model container.")
+        StampRowView(stamp: Stamp.samples[1])
     }
-    
+    .modelContainer(for: Stamp.self, inMemory: true)
 }

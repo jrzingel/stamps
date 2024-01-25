@@ -37,11 +37,10 @@ struct StampListView: View {
             Button("Add log", systemImage: "plus", action: addLog)
             
             Button(self.editMode ? "Done" : "Edit", action: { self.editMode.toggle() })
-        }
-        .onAppear {
-            #if targetEnvironment(simulator)
-            addSamples()
-            #endif
+            
+            Button("Sync", systemImage: "arrow.triangle.2.circlepath", action: {
+                print("Sync with API")
+            })
         }
     }
     
@@ -71,20 +70,6 @@ struct StampListView: View {
         return days
     }
     
-    func addSamples() {
-        let ls: [Stamp] = [
-            Stamp(5625, 176.253, -37.526, "Te Puna", "iPhone", "COMMON", "sample log"),
-            Stamp(5752, 176.253, -37.526, "Te Puna", "iPhone", "UNCOMMON", "dddd"),
-            Stamp(5752, 176.253, -37.526, "Te Puna", "iPhone", "SLEEP", "dddd"),
-            Stamp(44421, 176.253, -37.526, "Te Puke", "iPhone", "CODE", "morerrrr"),
-            Stamp(44429, 176.253, -37.526, "Auckland", "iPhone", "UNI", "someothers")
-            ]
-        for l in ls {
-            modelContext.insert(l)
-        }
-    }
-    
-    
     /// Delete some stamps from the history if necessary
     func deleteLog(_ indexSet: IndexSet) {
         for index in indexSet {
@@ -102,13 +87,6 @@ struct StampListView: View {
 }
 
 #Preview {
-    do {
-        let config = ModelConfiguration(isStoredInMemoryOnly: true)
-        let container = try ModelContainer(for: Stamp.self, configurations: config)
-        
-        return StampListView()
-            .modelContainer(container)
-    } catch {
-        fatalError("Failed to create model container.")
-    }
+    StampListView()
+        .modelContainer(for: Stamp.self, inMemory: true)
 }

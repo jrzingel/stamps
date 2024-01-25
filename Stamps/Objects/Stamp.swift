@@ -67,12 +67,6 @@ class Stamp: Identifiable {
         self.lastUpdated = Date()
     }
     
-    /// Only use for debugging purposes
-    convenience init(_ unixTime: UnixTime, _ longitude: Double, _ latitude: Double, _ suburb: String, _ device: String, _ rawType: String, _ log: String) {
-        self.init(from: RawStamp(time: unixTime, coords: [Coord(longitude: String(longitude), latitude: String(latitude))], suburb: suburb, device: device, category: rawType.toCategory(), title: log, desc: ""))
-    }
-    
-    
     
     // MARK: Helper map functions
     
@@ -84,11 +78,12 @@ class Stamp: Identifiable {
         category.color
     }
     
+    /// If the latest version of the stamp has been synced
+    var isSynced: Bool {
+        if let lastSynced = lastSynced {
+            return lastSynced >= lastUpdated
+        }
+        return false
+    }
+    
 }
-
-let SAMPLE_STAMPS: [Stamp] = [
-    Stamp(5625, 176.253, -37.526, "Te Puna", "iPhone", "COMMON", "sample log"),
-    Stamp(5752, 176.253, -37.526, "Te Puna", "iPhone", "UNCOMMON", "dddd"),
-    Stamp(5821, 176.253, -37.526, "Te Puke", "iPhone", "CODE", "morerrrr"),
-    Stamp(6111, 176.253, -37.526, "Auckland", "iPhone", "UNI", "someothers"),
-]
