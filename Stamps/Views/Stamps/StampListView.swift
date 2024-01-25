@@ -16,7 +16,9 @@ struct StampListView: View {
     @Query(sort: \Stamp.time, order: .reverse) var stamps: [Stamp]
     @Environment(\.modelContext) var modelContext
     @EnvironmentObject var navigationStore: NavigationStore
+    
     @State private var editMode: Bool = false
+    @State private var isSync: Bool = false
     
     var body: some View {
         List {
@@ -38,9 +40,13 @@ struct StampListView: View {
             
             Button(self.editMode ? "Done" : "Edit", action: { self.editMode.toggle() })
             
-            Button("Sync", systemImage: "arrow.triangle.2.circlepath", action: {
-                print("Sync with API")
-            })
+            Button {
+                isSync = true
+            } label: {
+                Image(systemName: "arrow.triangle.2.circlepath")
+                    .rotationEffect(Angle(degrees: isSync ? 180 : 0))
+                    .animation(.linear.repeatForever(autoreverses: false), value: isSync)
+            }
         }
     }
     
@@ -87,6 +93,8 @@ struct StampListView: View {
 }
 
 #Preview {
-    StampListView()
-        .modelContainer(for: Stamp.self, inMemory: true)
+    NavigationStack {
+        StampListView()
+            .modelContainer(for: Stamp.self, inMemory: true)
+    }
 }
