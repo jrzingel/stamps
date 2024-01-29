@@ -15,7 +15,7 @@ import SwiftData
 public typealias UnixTime = Int
 
 /// A raw structure of a log. These objects are parsed by the API
-struct RawStamp: Decodable {
+struct RawStamp: Codable {
     var time: UnixTime
     var coords: [Coord]
     var suburb: String
@@ -32,7 +32,7 @@ class Stamp: Identifiable {
     var lastUpdated: Date   // Last time data was modified
     var lastSynced: Date?   // Time synced with the API server
     
-    @Attribute(.unique) var time: Date      // Force only one log at a time
+    var time: Date      // Force only one log at a time
     var coords: [Coord]
     var suburb: String  // Localised version of coords[0]
     var device: String
@@ -84,6 +84,18 @@ class Stamp: Identifiable {
             return lastSynced >= lastUpdated
         }
         return false
+    }
+    
+    /// Stamp formatted as `RawStamp`
+    var raw: RawStamp {
+        return RawStamp(
+            time: UnixTime(self.time.timeIntervalSince1970),
+            coords: self.coords,
+            suburb: self.suburb,
+            device: self.device,
+            category: self.category,
+            title: self.title,
+            desc: self.desc)
     }
     
 }

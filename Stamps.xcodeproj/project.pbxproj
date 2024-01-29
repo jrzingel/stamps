@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1A050E0B2B67445400316EEC /* Stampbook.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A050E0A2B67445400316EEC /* Stampbook.swift */; };
+		1A050E0D2B67446F00316EEC /* Rev.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1A050E0C2B67446F00316EEC /* Rev.swift */; };
 		557522E8F8A3378D623245BE /* Pods_Stamps.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 263C13D38B5F8BCB86989632 /* Pods_Stamps.framework */; };
 		E866E4AF2B6100710095B0B8 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866E4AE2B6100710095B0B8 /* SettingsView.swift */; };
 		E866E4B12B621FDB0095B0B8 /* PreviewSampleData.swift in Sources */ = {isa = PBXBuildFile; fileRef = E866E4B02B621FDB0095B0B8 /* PreviewSampleData.swift */; };
@@ -94,6 +96,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		1A050E0A2B67445400316EEC /* Stampbook.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Stampbook.swift; sourceTree = "<group>"; };
+		1A050E0C2B67446F00316EEC /* Rev.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Rev.swift; sourceTree = "<group>"; };
 		263C13D38B5F8BCB86989632 /* Pods_Stamps.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Stamps.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		3E4353941D59B025EB505ED2 /* Pods-Stamps.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stamps.release.xcconfig"; path = "Target Support Files/Pods-Stamps/Pods-Stamps.release.xcconfig"; sourceTree = "<group>"; };
 		5B90476E82209BE925669294 /* Pods-Stamps.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Stamps.debug.xcconfig"; path = "Target Support Files/Pods-Stamps/Pods-Stamps.debug.xcconfig"; sourceTree = "<group>"; };
@@ -267,6 +271,8 @@
 				E8B5183A2B4A550A00925020 /* Core */,
 				E8B5183E2B4A550A00925020 /* EndpointApi.swift */,
 				E8B5183F2B4A550A00925020 /* Configuration.swift */,
+				1A050E0A2B67445400316EEC /* Stampbook.swift */,
+				1A050E0C2B67446F00316EEC /* Rev.swift */,
 			);
 			path = API;
 			sourceTree = "<group>";
@@ -542,6 +548,7 @@
 				E8B518602B4A557F00925020 /* Stamp.swift in Sources */,
 				E8B518882B4A559A00925020 /* MapView.swift in Sources */,
 				E8B5188C2B4A559A00925020 /* ReducedMapView.swift in Sources */,
+				1A050E0B2B67445400316EEC /* Stampbook.swift in Sources */,
 				E8B5186E2B4A557F00925020 /* Coord.swift in Sources */,
 				E8B518422B4A550A00925020 /* BaseConfiguration.swift in Sources */,
 				E8B518962B4A559A00925020 /* StampDetailView.swift in Sources */,
@@ -551,6 +558,7 @@
 				E8B518522B4A553900925020 /* Result+Success.swift in Sources */,
 				E8B518642B4A557F00925020 /* Day.swift in Sources */,
 				E8B518402B4A550A00925020 /* BaseApi.swift in Sources */,
+				1A050E0D2B67446F00316EEC /* Rev.swift in Sources */,
 				E8B518742B4A559000925020 /* StorageManager.swift in Sources */,
 				E8B518902B4A559A00925020 /* StampRowView.swift in Sources */,
 				E8B518622B4A557F00925020 /* Logger.swift in Sources */,

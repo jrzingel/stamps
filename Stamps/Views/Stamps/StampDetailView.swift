@@ -66,6 +66,9 @@ struct StampDetailView: View {
             }
         }
         .navigationTitle("Stamp")
+        .onAppear {
+            print("Revision \(revision(stamp: stamp.raw))")
+        }
     }
 }
 
