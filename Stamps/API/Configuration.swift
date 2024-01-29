@@ -16,7 +16,7 @@ struct AppSecrets: Decodable {
     let API_TOKEN: String
 }
 
-public class Configuration: BaseConfiguration {
+public class Configuration: BaseBackendConfiguration {
     public let testing: Bool = true
     
     public var baseUrl: URLComponents {

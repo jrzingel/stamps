@@ -26,6 +26,9 @@ struct StampsApp: App {
     var body: some Scene {
         WindowGroup {
             Sidebar()
+                .onAppear {
+                    launch()
+                }
         }
         .modelContainer(sharedModelContainer)
     }

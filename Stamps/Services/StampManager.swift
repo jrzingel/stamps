@@ -20,33 +20,6 @@ final class StampManager: ObservableObject {
     
     // MARK: - GET
     
-    /// Get more stamps as specified from the API
-    public func getLastStamp(context: ModelContext) {
-        queryingApi = true
-        EndpointApi.getLastLog { result in
-            switch result {
-            case .failure(let error): Logger.api.error("Cannot get more stamps: \(error)")
-            case .success(let log):
-                context.insert(log)
-            }
-            self.queryingApi = false
-        }
-    }
-    
-    /// Get the last n stamps from the API
-    public func getLastNStamps(context: ModelContext, num: Int) {
-        queryingApi = true
-        EndpointApi.getLastNLogs(num: num) { result in
-            switch result {
-            case .failure(let error): Logger.api.error("Cannot get last n=\(num) stamps. \(error)")
-            case .success(let stamps):
-                for log in stamps {
-                    context.insert(log)
-                }
-            }
-            self.queryingApi = false
-        }
-        
-    }
+
     
 }
